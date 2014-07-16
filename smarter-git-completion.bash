@@ -6,7 +6,7 @@ _git_completion_add()
 
 _git_completion_checkout()
 {
-    COMPREPLY=( $(compgen -W "$(git diff --name-only)" -- $1) )
+  COMPREPLY=( $(compgen -W "$(git diff --name-only)" -- $1) $(compgen -W "$(git for-each-ref refs/heads --format="%(refname:short)")" -- $1) )
     return 0
 }
 
